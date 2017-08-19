@@ -1,50 +1,37 @@
-# chattered-frontend
+# Chattered (Ember/Semantic-ui frontend)
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+## Specification
+General
 
-## Prerequisites
+* The chat is anonymous, no registration or password required
+* Users should be able to use a nickname if no one else is using it
+* Users should be logged in with same nickname after reopening the browser, if no other user is using it
+* The chat has multiple channels
+* A nickname can join multiple channels
+* A nickname can post messages to channels it's joined
+* A nickname can exit channels
+* A nickname can create a new channel
 
-You will need the following things properly installed on your computer.
+## Models
+#### Nick
+* Has a **name** (string / unique)
+* Has a **status** (online / offline)
+* Has many **Messages**
+* Has many owned **Channels**
+* Has many joined channels
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Ember CLI](https://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+#### Channel
+* Has a **title** (string / unique)
+* Has many **Messages**
+* Belongs to **Nick** (owned by)
+* Has many joined nicks
 
-## Installation
+#### ChannelJoin
+* Belongs to **Nick**
+* Belongs to **Channel**
 
-* `git clone <repository-url>` this repository
-* `cd chattered-frontend`
-* `npm install`
-
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+#### Message
+* Has content (text)
+* Has sent date
+* Belongs to **Nick**
+* Belongs to **Channel**

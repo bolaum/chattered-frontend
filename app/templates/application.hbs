@@ -1,5 +1,10 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<div class="ui fixed inverted main menu">
+  {{#link-to 'index' class="title item"}}
+    <b>chattered</b>
+  {{/link-to}}
+</div>
 
-{{outlet}}
+
+<div id="chat-grid" class="ui grid row">
+  {{outlet}}
+</div>

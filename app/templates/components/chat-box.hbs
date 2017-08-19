@@ -1,0 +1,28 @@
+<div class="ui grid flex-column-no-padding">
+  <div class="row flex-auto">
+    <div class="column">
+      {{channel.title}}
+    </div>
+  </div>
+  <div class="row flex-on no-padding-top">
+    <div class="column flex-column">
+      <div class="ui grid flex-column-no-padding">
+        <div class="row flex-on">
+          <div class="column flex-on overflow-y">
+            {{#each (sort-by "sentAt" channel.messages) as |msg|}}
+              {{chat-box-message message=msg class="row"}}
+            {{/each}}
+          </div>
+          <div class="column flex-200px overflow-y">
+            {{#each (sort-by "name" channel.joinedNicks) as |nick|}}
+              <p>{{nick.name}}</p>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui vertical segment flex-auto">
+  MESSAGE BOX
+</div>
